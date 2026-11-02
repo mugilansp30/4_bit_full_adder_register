@@ -80,8 +80,8 @@ This project implements a **4-bit Ripple Carry Full Adder with a Synchronous Reg
 ```mermaid
 graph LR
     subgraph Inputs ["Module Inputs"]
-        inA["A[3:0] (Operand A)"]
-        inB["B[3:0] (Operand B)"]
+        inA["A (Operand A: 4-bit)"]
+        inB["B (Operand B: 4-bit)"]
         inCIN["CIN (Carry In)"]
         inCLK["clk (Clock)"]
         inRST["reset (Sync Reset)"]
@@ -99,28 +99,28 @@ graph LR
 
         inA -. Bit 1 .-> FA1
         inB -. Bit 1 .-> FA1
-        FA0 -- "Carry C1" --> FA1
+        FA0 -- Carry C1 --> FA1
 
         inA -. Bit 2 .-> FA2
         inB -. Bit 2 .-> FA2
-        FA1 -- "Carry C2" --> FA2
+        FA1 -- Carry C2 --> FA2
 
         inA -. Bit 3 .-> FA3
         inB -. Bit 3 .-> FA3
-        FA2 -- "Carry C3" --> FA3
+        FA2 -- Carry C3 --> FA3
     end
 
     subgraph RegisterBank ["Stage 2: 5-Bit D-Flip-Flop Register Bank"]
-        DFF0["DFF0<br/>D: adder_sum[0]<br/>Q: stored_output[0]"]
-        DFF1["DFF1<br/>D: adder_sum[1]<br/>Q: stored_output[1]"]
-        DFF2["DFF2<br/>D: adder_sum[2]<br/>Q: stored_output[2]"]
-        DFF3["DFF3<br/>D: adder_sum[3]<br/>Q: stored_output[3]"]
-        DFF4["DFF4<br/>D: adder_cout<br/>Q: stored_output[4]"]
+        DFF0["DFF0<br/>D: adder_sum 0<br/>Q: stored_out 0"]
+        DFF1["DFF1<br/>D: adder_sum 1<br/>Q: stored_out 1"]
+        DFF2["DFF2<br/>D: adder_sum 2<br/>Q: stored_out 2"]
+        DFF3["DFF3<br/>D: adder_sum 3<br/>Q: stored_out 3"]
+        DFF4["DFF4<br/>D: adder_cout<br/>Q: stored_out 4"]
 
-        FA0 -->|adder_sum[0]| DFF0
-        FA1 -->|adder_sum[1]| DFF1
-        FA2 -->|adder_sum[2]| DFF2
-        FA3 -->|adder_sum[3]| DFF3
+        FA0 -->|adder_sum 0| DFF0
+        FA1 -->|adder_sum 1| DFF1
+        FA2 -->|adder_sum 2| DFF2
+        FA3 -->|adder_sum 3| DFF3
         FA3 -->|adder_cout| DFF4
 
         inCLK ==>|Clock Edge| DFF0
@@ -137,7 +137,7 @@ graph LR
     end
 
     subgraph Outputs ["Registered Module Outputs"]
-        outSUM["SUM[3:0] (Registered Sum)"]
+        outSUM["SUM (Registered Sum: 4-bit)"]
         outCOUT["COUT (Registered Carry Out)"]
 
         DFF0 --> outSUM
