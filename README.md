@@ -362,7 +362,7 @@ iverilog -o sim_adder.vvp 4_bit_full_adder.v d_flip_flop.v 4_bit_full_adder_regi
 vvp sim_adder.vvp
 ```
 
-### Option B: Using Mentor Graphics / Intel ModelSim
+### Option B: Intel ModelSim
 
 **In ModelSim GUI:**
 1. Open ModelSim and select **File $\rightarrow$ Change Directory...** to this project folder.
