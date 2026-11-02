@@ -1,4 +1,4 @@
-# 4-Bit Full Adder with Registered Output (D-Flip-Flop Pipeline)
+# 4-Bit Ripple Carry Full Adder with Registered Output [D-Flip-Flop Pipeline]
 
 <div align="center">
 
