@@ -405,7 +405,7 @@ vsim -c -do "run -all; quit" tb_full_adder_with_register
 ## 📁 Repository Structure
 
 ```
-4_bit_adder_register/
+4_bit_rcfull_adder_register/
 ├── 4_bit_full_adder.v           # 1-bit FA & 4-bit Ripple Carry Adder modules
 ├── 4_bit_full_adder_register.v  # Top-level registered adder design
 ├── 4_bit_full_adder_register_tb.v # Self-checking 512-combination testbench
@@ -421,7 +421,7 @@ vsim -c -do "run -all; quit" tb_full_adder_with_register
 
 **Mugilan S P**
 - GitHub: [@mugilansp30](https://github.com/mugilansp30)
-- Repository: [4_bit_adder_register](https://github.com/mugilansp30/4_bit_adder_register)
+- Repository: [4_bit_rcfull_adder_register](https://github.com/mugilansp30/4_bit_rcfull_adder_register)
 
 ---
 
