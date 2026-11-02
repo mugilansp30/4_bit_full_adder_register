@@ -1,0 +1,62 @@
+# ==============================================================================
+# ModelSim / QuestaSim Simulation Artifacts
+# ==============================================================================
+work/
+_info
+transcript
+vsim.wlf
+*.wlf
+modelsim.ini
+*.mpf
+*.mti
+
+# ==============================================================================
+# Icarus Verilog & GTKWave Artifacts
+# ==============================================================================
+*.vvp
+*.vcd
+*.lxt
+*.fst
+*.gtkw
+
+# ==============================================================================
+# Synthesis / EDA Tool Outputs (Quartus, Vivado, etc.)
+# ==============================================================================
+db/
+incremental_db/
+*.qsf
+*.qpf
+*.rpt
+*.summary
+*.smsg
+*.done
+*.pin
+*.sof
+*.pof
+*.flow.rpt
+*.map.rpt
+*.map.summary
+*.fit.rpt
+*.fit.summary
+*.sta.rpt
+*.sta.summary
+*.eda.rpt
+*.eda.summary
+xsim.dir/
+*.jou
+*.log
+*.pb
+*.str
+
+# ==============================================================================
+# OS & Editor Artifacts
+# ==============================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.bak
+*.orig
+*.swp
+*~
+.vscode/
+.idea/
