@@ -163,8 +163,14 @@ graph LR
 ### 3. Gate-Level Implementation of 1-Bit Full Adder (`full_adder_1bit`)
 
 Each 1-bit full adder computes:
-$$\text{SUM} = A \oplus B \oplus \text{CIN}$$
-$$\text{COUT} = (A \cdot B) + (B \cdot \text{CIN}) + (A \cdot \text{CIN})$$
+
+$$
+\text{SUM} = A \oplus B \oplus \text{CIN}
+$$
+
+$$
+\text{COUT} = (A \cdot B) + (B \cdot \text{CIN}) + (A \cdot \text{CIN})
+$$
 
 ```
                    A ───┬───────────────────┐
@@ -200,10 +206,23 @@ $$\text{COUT} = (A \cdot B) + (B \cdot \text{CIN}) + (A \cdot \text{CIN})$$
 
 ### 4-Bit Registered Arithmetic Operation
 
-The complete system computes:
-$$\{COUT, SUM[3:0]\}_{t + T_{\text{clk}}} = \begin{cases} 5'b00000 & \text{if } reset = 1 \\ A[3:0] + B[3:0] + CIN & \text{if } reset = 0 \end{cases}$$
+The complete system computes the registered output at the next rising clock edge ($t + T_{\text{clk}}$):
 
-Range of possible sums: $0 \le \text{Result} \le 31$ ($5'b00000 \le \{COUT, SUM\} \le 5'b11111$).
+$$
+\{COUT, SUM[3:0]\}_{t + T_{\text{clk}}} = 
+\begin{cases} 
+5\text{'b}00000, & \text{if } reset = 1 \\\\ 
+A[3:0] + B[3:0] + CIN, & \text{if } reset = 0 
+\end{cases}
+$$
+
+| Operating Mode | Condition | System Output $\{COUT, SUM[3:0]\}$ | Decimal Range |
+| :--- | :--- | :--- | :--- |
+| **Synchronous Reset** | `reset = 1` | `5'b00000` | $0$ |
+| **Normal Addition** | `reset = 0` | $A[3:0] + B[3:0] + CIN$ | $0 \le \text{Result} \le 31$ |
+
+- **Output Bit-Width**: 4-bit operands ($A$, $B$) + 1-bit $CIN$ yield a **5-bit result** ($SUM[3:0]$ and $COUT$).
+- **Dynamic Numerical Range**: $0 \le \text{Result} \le 31$ (`5'b00000` $\le \{COUT, SUM\} \le$ `5'b11111`).
 
 ---
 
@@ -237,8 +256,7 @@ The testbench (`4_bit_full_adder_register_tb.v`) implements an **exhaustive veri
 - **Clock Period**: 10 ns (50 MHz equivalent frequency).
 - **Setup Time Compliance**: Stimulus changes at `@(negedge clk)` so combinational ripple propagation fully settles well before the clock edge.
 - **Sampling & Strobe**: Output is read and evaluated at `@(posedge clk)` with a `#1` delta delay to model realistic flip-flop clock-to-Q settling time.
-- **Vectors Checked**:
-  $$16 \ (A) \times 16 \ (B) \times 2 \ (CIN) = 512 \text{ Test Cases}$$
+- **Vectors Checked**: $16 \ (A) \times 16 \ (B) \times 2 \ (CIN) = 512$ Exhaustive Test Vectors (100% state coverage).
 
 ### Execution Results:
 ```text
