@@ -1,62 +1,55 @@
 # ==============================================================================
-# ModelSim / QuestaSim Simulation Artifacts
+# Git Ignore for 4-Bit Full Adder with Register Project
+# Optimized for ModelSim / QuestaSim & Hardware Simulation
 # ==============================================================================
+
+# ------------------------------------------------------------------------------
+# ModelSim / QuestaSim Simulation Artifacts
+# ------------------------------------------------------------------------------
+# Compiled simulation libraries
 work/
+**/work/
 _info
-transcript
-vsim.wlf
+_lock
+_vmake
+
+# Waveform log files and transcripts
 *.wlf
+**/*.wlf
+vsim.wlf
+**/vsim.wlf
+vsim*.wlf
+wlft*
+transcript
+transcript.*
+*.log
+**/*.log
+
+# ModelSim project and local configuration files
 modelsim.ini
+**/modelsim.ini
 *.mpf
 *.mti
-
-# ==============================================================================
-# Icarus Verilog & GTKWave Artifacts
-# ==============================================================================
-*.vvp
-*.vcd
-*.lxt
-*.fst
-*.gtkw
-
-# ==============================================================================
-# Synthesis / EDA Tool Outputs (Quartus, Vivado, etc.)
-# ==============================================================================
-db/
-incremental_db/
-*.qsf
-*.qpf
-*.rpt
-*.summary
-*.smsg
-*.done
-*.pin
-*.sof
-*.pof
-*.flow.rpt
-*.map.rpt
-*.map.summary
-*.fit.rpt
-*.fit.summary
-*.sta.rpt
-*.sta.summary
-*.eda.rpt
-*.eda.summary
-xsim.dir/
-*.jou
-*.log
-*.pb
-*.str
-
-# ==============================================================================
-# OS & Editor Artifacts
-# ==============================================================================
-.DS_Store
-Thumbs.db
-desktop.ini
 *.bak
-*.orig
-*.swp
-*~
+
+# ------------------------------------------------------------------------------
+# General Editor & Operating System Files
+# ------------------------------------------------------------------------------
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors & IDEs
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
